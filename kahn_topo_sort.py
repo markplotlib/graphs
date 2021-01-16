@@ -1,4 +1,17 @@
 def kahn(adj):
+    """Kahn topological sort: pull out all vertices without incoming edges
+    until there are no more vertices.
+    Input: adj is an adjacency matrix [0..n-1][0..n-1] for a DAG,
+            such that adj[i][i] has the weight of an edge from i to k.
+    Output: list of vertices in a topological order
+    >>> kahn([[0,1],\
+              [0,0]])   # 0 --> 1
+    [0, 1]
+    >>> kahn([[0,0,0],\     # 0 points nowhere
+              [1,0,1],\     # 1 points to 0 and to 2
+              [1,0,0]])     # 1 --> 2 --> 0 <-- 1
+    [1, 2, 0]
+    """
 
     n = len(adj)
     # fill in the diagonal [i][i] with the number of incoming edges for vertex i
